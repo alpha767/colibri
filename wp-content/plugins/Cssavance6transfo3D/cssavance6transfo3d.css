@@ -1,0 +1,81 @@
+body
+{
+	/*Réglage de l'effet de profondeur*/
+	/*Attention : grande valeur <=> faible profondeur*/
+    perspective: 800px;
+	
+	/* Point de fuite placé aux coordonnées (20, 70)*/
+	/* perspective-origin: 20px 70px; 	 */
+	
+	/* Point de fuite placé avec mots clefs*/
+	/* perspective-origin: left;  */
+}
+
+div
+{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    opacity: 0.5;
+    border: 2px solid #444;
+    text-align: center;
+    font-size: 1.3em;
+    font-family: arial, sans-serif;
+    transition: 2s;
+    /* backface-visibility: hidden; /* Permet d'éviter de voir le bloc de dos */ */
+}
+
+#devant
+{
+    z-index: 100;
+    background-image: linear-gradient(white, green);
+	transform: rotateY(0deg) translateZ(100px);
+}
+
+#derriere
+{
+    /* z-index: 50; */
+    background-image: linear-gradient(white, red);
+    transform: rotateY(-180deg) translateZ(100px); /* Celui-ci est retourné par défaut */
+}
+
+#gauche
+{
+    background-image: linear-gradient(white, blue);
+    transform: rotateY(-90deg) translateZ(100px);
+	}
+
+#droite
+{
+    background-image: linear-gradient(white, yellow);
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+#dessus
+{
+    background-image: linear-gradient(white, yellow);
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+#dessous
+{
+    background-image: linear-gradient(white, yellow);
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+
+@keyframes masuperanimation  {
+    from {
+		transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+body:hover
+{
+    animation: masuperanimation 2s linear alternate infinite;
+}
